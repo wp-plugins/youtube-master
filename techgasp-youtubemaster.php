@@ -2,7 +2,7 @@
 /**
 Plugin Name: Youtube Master
 Plugin URI: http://wordpress.techgasp.com/youtube-master/
-Version: 2.0
+Version: 2.1
 Author: TechGasp
 Author URI: http://wordpress.techgasp.com
 Text Domain: youtube-master
@@ -32,7 +32,11 @@ define('TECHGASP_YOUTUBEMASTER_ID', 'youtube-master-options');
 // DEFINE PLUGIN NICK
 define('TECHGASP_YOUTUBEMASTER_NICK', 'Youtube Master');
 
+// HOOK WIDGET
 require_once('techgasp-youtubemaster-widget.php');
+
+// HOOK INVITATION
+
 
     class techgasp_youtubemaster
     {
@@ -97,7 +101,7 @@ require_once('techgasp-youtubemaster-widget.php');
 		*/
 		public static function content_with_quote($content)
 		{
-			$quote = '<p><blockquote>' . get_option('tsm_quote') . '</blockquote></p>';
+			$quote = '<p>' . get_option('tsm_quote') . '</p>';
 			return $content . $quote;
 		}
 		
