@@ -2,7 +2,7 @@
 Contributors: Techgasp
 Tags: wordpress, plugin, widget, shortcode, techgasp, youtube, video, playlist, youtube video, youtube playlist, youtube channel, video player
 Requires at least: 3.5
-Tested up to: 3.5.1
+Tested up to: 3.7
 Stable tag: 2.1
 License: GPLv2 or later
 
