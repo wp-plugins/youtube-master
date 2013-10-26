@@ -2,7 +2,7 @@
 /**
 Plugin Name: Youtube Master
 Plugin URI: http://wordpress.techgasp.com/youtube-master/
-Version: 2.1
+Version: 4.0
 Author: TechGasp
 Author URI: http://wordpress.techgasp.com
 Text Domain: youtube-master
@@ -24,22 +24,23 @@ License: GPL2 or later
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-if(!class_exists('techgasp_youtubemaster')) :
+
+if(!class_exists('youtube_master')) :
 
 // DEFINE PLUGIN ID
-define('TECHGASP_YOUTUBEMASTER_ID', 'youtube-master-options');
+define('YOUTUBE_MASTER_ID', 'youtube-master');
 
 // DEFINE PLUGIN NICK
-define('TECHGASP_YOUTUBEMASTER_NICK', 'Youtube Master');
+define('YOUTUBE_MASTER_NICK', 'Youtube Master');
 
 // HOOK WIDGET
-require_once('techgasp-youtubemaster-widget.php');
+require_once('includes/youtube-master-widget.php');
 
 // HOOK INVITATION
 
+// HOOK SHORTCODE
 
-    class techgasp_youtubemaster
-    {
+	class youtube_master{
 		/** function/method
 		* Usage: return absolute file path
 		* Arg(1): string
@@ -54,9 +55,9 @@ require_once('techgasp-youtubemaster-widget.php');
 		* Arg(0): null
 		* Return: void
 		*/
-		public static function techgasp_youtubemaster_register()
+		public static function youtube_master_register()
 		{
-			register_setting(TECHGASP_YOUTUBEMASTER_ID.'_options', 'tsm_quote');
+			register_setting(YOUTUBE_MASTER_ID, 'tsm_quote');
 		}
 		/** function/method
 		* Usage: hooking (registering) the plugin menu
@@ -66,8 +67,8 @@ require_once('techgasp-youtubemaster-widget.php');
 		public static function menu()
 		{
 			// Create menu tab
-			add_options_page(TECHGASP_YOUTUBEMASTER_NICK.' Plugin Options', TECHGASP_YOUTUBEMASTER_NICK, 'manage_options', TECHGASP_YOUTUBEMASTER_ID.'_options', array('techgasp_youtubemaster', 'options_page'));
-			add_filter( 'plugin_action_links', array('techgasp_youtubemaster', 'techgasp_youtubemaster_link'), 10, 2 );
+			add_options_page(YOUTUBE_MASTER_NICK.' Plugin Options', YOUTUBE_MASTER_NICK, 'manage_options', YOUTUBE_MASTER_ID.'-admin', array('youtube_master', 'options_page'));
+			add_filter( 'plugin_action_links', array('youtube_master', 'youtube_master_link'), 10, 2 );
 		}
 		/** function/method
 		* Usage: show options/settings form page
@@ -80,20 +81,20 @@ require_once('techgasp-youtubemaster-widget.php');
 			{
 				wp_die( __('You do not have sufficient permissions to access this page.') );
 			}
-			$plugin_id = TECHGASP_YOUTUBEMASTER_ID;
+			$plugin_id = YOUTUBE_MASTER_ID;
 			// display options page
-			include(self::file_path('techgasp-youtubemaster-admin.php'));
+			include(self::file_path('includes/youtube-master-admin.php'));
 		}
 		/** function/method
-                * Usage: show options/settings form page
-                * Arg(0): null
-                * Return: void
-                */
-		 public static function techgasp_youtubemaster_widget()
-                {
-                        // display widget page
-                        include(self::file_path('techgasp-youtubemaster-widget.php'));
-                }
+		* Usage: show options/settings form page
+		* Arg(0): null
+		* Return: void
+		*/
+		 public static function youtube_master_widget()
+		{
+			// display widget page
+			include(self::file_path('includes/youtube-master-widget.php'));
+		}
 		/** function/method
 		* Usage: filtering the content
 		* Arg(1): string
@@ -104,23 +105,24 @@ require_once('techgasp-youtubemaster-widget.php');
 			$quote = '<p>' . get_option('tsm_quote') . '</p>';
 			return $content . $quote;
 		}
-		
 		// Add settings link on plugin page
-		public function techgasp_youtubemaster_link($links, $file) {
-		static $this_plugin;
-		if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
-		if ($file == $this_plugin){
-		$settings_link = '<a href="' . admin_url( 'options-general.php?page='.TECHGASP_YOUTUBEMASTER_ID).'_options' . '">' . __( 'Settings' ) . '</a>';
-		array_unshift($links, $settings_link);
-		}
+		public static function youtube_master_link($links, $file) {
+			static $this_plugin;
+			if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
+			if ($file == $this_plugin){
+				$settings_link = '<a href="' . admin_url( 'options-general.php?page='.YOUTUBE_MASTER_ID).'-admin' . '">' . __( 'Settings' ) . '</a>';
+				array_unshift($links, $settings_link);
+			}
 		return $links;
 		}
+		// Advanced Updater
 	}
-		if ( is_admin() )
+	if ( is_admin() )
 		{
-		add_action('admin_init', array('techgasp_youtubemaster', 'techgasp_youtubemaster_register'));
-		add_action('admin_menu', array('techgasp_youtubemaster', 'menu'));
+		add_action('admin_init', array('youtube_master', 'youtube_master_register'));
+		add_action('admin_menu', array('youtube_master', 'menu'));
+		
 		}
-		add_filter('the_content', array('techgasp_youtubemaster', 'content_with_quote'));
+	add_filter('the_content', array('youtube_master', 'content_with_quote'));
 endif;
 ?>
