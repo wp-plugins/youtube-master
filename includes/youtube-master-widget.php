@@ -43,7 +43,7 @@ class youtube_master_widget extends WP_Widget {
 		//Strip tags from title and name to remove HTML
 		$instance['name'] = strip_tags( $new_instance['name'] );
 		$instance['title'] = strip_tags( $new_instance['title'] );
-		$instance['show_youtubebutton'] = $new_instance['show_youtubebutton'];
+		$instance['show_youtubebutton'] = isset($new_instance['show_youtubebutton']);
 		$instance['youtubebutton_id'] = $new_instance['youtubebutton_id'];
 		$instance['youtubebutton_layout'] = $new_instance['youtubebutton_layout'];
 		return $instance;
