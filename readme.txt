@@ -2,8 +2,8 @@
 Contributors: Techgasp
 Tags: wordpress, plugin, widget, shortcode, techgasp, youtube, video, playlist, youtube video, youtube playlist, youtube channel, video player
 Requires at least: 3.5
-Tested up to: 3.7.1
-Stable tag: 4.0.3
+Tested up to: 3.8
+Stable tag: 4.1
 License: GPLv2 or later
 
 Youtube Master displays Youtube Playlists or Single Videos with optional Youtube Subscribe Channel button in any template widget position.
@@ -92,6 +92,10 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 
 
 == Changelog ==
+
+= 4.1 =
+* Wordpress 3.8 Ready
+* Minor tweaks related to new stock buttons
 
 = 4.0.3 =
 * Faster Background Updater

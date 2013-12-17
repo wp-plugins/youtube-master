@@ -2,7 +2,7 @@
 /**
 Plugin Name: Youtube Master
 Plugin URI: http://wordpress.techgasp.com/youtube-master/
-Version: 4.0.3
+Version: 4.1
 Author: TechGasp
 Author URI: http://wordpress.techgasp.com
 Text Domain: youtube-master
