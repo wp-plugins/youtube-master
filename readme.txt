@@ -2,8 +2,8 @@
 Contributors: Techgasp
 Tags: wordpress, plugin, widget, shortcode, techgasp, youtube, video, playlist, youtube video, youtube playlist, youtube channel, video player
 Requires at least: 3.5
-Tested up to: 3.8
-Stable tag: 4.1
+Tested up to: 3.8.1
+Stable tag: 4.3
 License: GPLv2 or later
 
 Youtube Master displays Youtube Playlists or Single Videos with optional Youtube Subscribe Channel button in any template widget position.
@@ -18,26 +18,35 @@ But that's not all, we packed the html5 with the ability to show a single video 
 
 If you have an Youtube Channel, we also added an optional Youtube Subscribe Channel button under the video player that will make your channel grow exponentially.
 
+Both the widget and the shortcode framework are fully mobile devices responsive, a must for any professional website.
+
 **Pimp your wordpress website professionally with youtube videos**
+
+
 
 IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 
 **LITE Version Contains:**
 
-* Display or hide Widget Title
-* Display or hide Youtube Subscribe Button. Default with Bubble Count and Full with Bubble Count and Youtube User Avatar.
+* Display, Hide or Change any Widget Title
+* Youtube Master Buttons Widget (Display or hide Youtube Subscribe Button. Default with Bubble Count and Full with Bubble Count and Youtube User Avatar)
 
 **ADVANCED Version Contains:**
 
-* Display or hide Widget Title
+* Display, Hide or Change any Widget Title
+* Fully Mobile Responsive
+* Youtube Master Buttons Widget. Display or hide Youtube Subscribe Button. Default with Bubble Count and Full with Bubble Count and Youtube User Avatar. Works great when published under the other player youtube widgets.
+* Youtube Master Responsive Video Widget. Designed for single youtube videos fast page load times. Fully mobile responsive.
+* Youtube Master Responsive Playlist Widget. Specially designed for fast page load times of youtube playlists. Fully mobile responsive.
 * Display or hide Youtube Subscribe Button. Default with Bubble Count and Full with Bubble Count and Youtube User Avatar.
 * Display or hide Youtube Video Player (Single Youtube Videos or Playlists)
-* Shortcode Framework v2. Publish widget inside pages and posts
+* Shortcode Framework v3. Universal Shortcode for all pages and posts and Individual Shortcode for each page or post
+* Shortcodes allow you to professionally display youtube videos or playlists inside your wordpress pages and posts
 * [Advanced Version Link](http://wordpress.techgasp.com/youtube-master/)
 
 **ONLINE DEMO**
 
-* Right of the page, sidebar widget
+* Right of the page, sidebar widgets
 * Inside the post, with shortcode framework v2
 * [Demo Link](http://wordpress.techgasp.com/youtube-master/)
 
@@ -53,7 +62,7 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 
 1. Use the Wordpress Installer, Updater.
 2. Activate in the "Plugins" admin panel.
-3. Visit the "Widget Page | Youtube Master" to configure the settings and your template widget position.
+3. Visit the "Widget Page | Youtube Master Widgets" to configure widget settings and your template widget position.
 4. [Youtube Master Documentation](http://wordpress.techgasp.com/youtube-master-documentation/)
 
 
@@ -62,20 +71,21 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 = Issues with buttons display =
 * Please update to latest version. Up-to-date API's are available
 
-= Where are my videos? =
-* Advanced Version contains: Display or hide Widget Title, Display or hide Youtube Subscribe Button, Display or hide Youtube Player (Single Youtube Videos or Playlist), Shortcode Framework v2, publish widget inside pages and posts
+= Where are my videos, widgets? =
+* Advanced Version Add-ons contains all widgets
 * [Advanced Version Link](http://wordpress.techgasp.com/youtube-master/)
 
-= Where is Shortcode? =
-* Advanced Version contains all plugin options and the Shortcode Framework v2, publish widget inside pages and posts
+= Insert Shortcode in Pages or Posts =
+* Advanced Version Add-ons contain the shortcode framework v3
+* Insert the universal shortcode into any page or post. [youtube-master-un]
+* Insert the individual shortcode into any page or post. [youtube-master]
 * [Advanced Version Link](http://wordpress.techgasp.com/youtube-master/)
-* Insert the code into the page or post. [youtube-master]
 
-= What's this Shortcode Framework v2 =
-* It's a framework developed by TechGasp and built upon wordpress marvellous resources.
-* Allows users to quickly and easily display plugins or widgets inside their pages and posts.
-* It's available in all TechGasp advanced version plugins. Lite versions plugins do not include shortcode framework v2.
-* [About Shortcode Framework v2](http://wordpress.techgasp.com/new-wordpress-framework-from-techgasp/)
+= What's this Shortcode Framework v3 =
+* It's a framework developed by TechGasp and built upon wordpress marvellous resources
+* Allows users to quickly and easily display plugins or widgets inside their pages and posts
+* It's available in all TechGasp advanced version plugins. Lite versions plugins do not include shortcode framework v3
+* [About Shortcode Framework v3](http://wordpress.techgasp.com/techgasp-wordpress-framework-v3/)
 
 = Need More Help =
 * [Youtube Master Documentation](http://wordpress.techgasp.com/youtube-master-documentation)
@@ -84,14 +94,29 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 
 == Screenshots ==
 
-1. Widget With Youtube Player (Single Video) + Default Youtube Subscribe Button.
-2. Widget With Youtube Player (Single Video) + Full Youtube Subscribe Button.
-3. Widget With Youtube Player (Playlist) + Full Youtube Subscribe Button.
-4. Widget With Youtube Player (Single Video) + Full Youtube Subscribe Button.
-5. Widget inside pages and posts. Shortcode framework v2 implementation. Youtube Video + Youtube Playlist inside a page.
+1. Youtube Master Responsive Video Widget + Youtube Master Buttons Widget (Default Youtube Subscribe Button)
+2. Youtube Master Responsive Video Widget + Youtube Master Buttons Widget (Full Youtube Subscribe Button)
+3. Youtube Master Responsive Playlist + Youtube Master Buttons Widget (Full Youtube Subscribe Button)
+4. Youtube Master Responsive Video Widget + Youtube Master Buttons Widget (Full Youtube Subscribe Button)
+5. Shortcode inside pages and posts. Individual Shortcode framework implementation.
+6. Shortcode inside pages and posts. Universal Shortcode framework implementation.
 
 
 == Changelog ==
+
+= 4.3 =
+* New TechGasp Plugin Framework
+* New Plugin Menu
+* New Administrator Page
+* New Universal Shortcode that can be combined with Individual Shortcodes in Pages and Posts
+* Adding index SEC
+* New Youtube API
+* Youtube Master Buttons Widget
+* Youtube Master Responsive Video Widget
+* Youtube Master Responsive Playlist Widget
+
+= 4.1.1 =
+* Youtube Single Video API update
 
 = 4.1 =
 * Wordpress 3.8 Ready
@@ -132,8 +157,11 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 
 == Upgrade Notice ==
 
+= 4.3 =
+* IMPORTANT Upgrade to new TechGasp Plugin Framework v3
+
 = 4.0 =
-* IMPORTANT Upgrade to new TechGasp Plugin Framework
+* IMPORTANT Upgrade to new TechGasp Plugin Framework v2
 
 = 2.0 =
 * IMPORTANT Upgrade to Stable release

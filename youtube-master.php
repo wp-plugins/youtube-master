@@ -2,7 +2,7 @@
 /**
 Plugin Name: Youtube Master
 Plugin URI: http://wordpress.techgasp.com/youtube-master/
-Version: 4.1
+Version: 4.3
 Author: TechGasp
 Author URI: http://wordpress.techgasp.com
 Text Domain: youtube-master
@@ -24,95 +24,89 @@ License: GPL2 or later
     along with this program; if not, write to the Free Software
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
-
 if(!class_exists('youtube_master')) :
-
-// DEFINE PLUGIN ID
+///////DEFINE ID//////
 define('YOUTUBE_MASTER_ID', 'youtube-master');
+///////DEFINE VERSION///////
+define( 'youtube_master_VERSION', '4.3' );
+global $youtube_master_version, $youtube_master_name;
+$youtube_master_version = "4.3"; //for other pages
+$youtube_master_name = "Youtube Master"; //pretty name
+if( is_multisite() ) {
+update_site_option( 'youtube_master_installed_version', $youtube_master_version );
+update_site_option( 'youtube_master_name', $youtube_master_name );
+}
+else{
+update_option( 'youtube_master_installed_version', $youtube_master_version );
+update_option( 'youtube_master_name', $youtube_master_name );
+}
+// HOOK ADMIN
+require_once( dirname( __FILE__ ) . '/includes/youtube-master-admin.php');
+// HOOK ADMIN IN & UN SHORTCODE
+require_once( dirname( __FILE__ ) . '/includes/youtube-master-admin-shortcodes.php');
+// HOOK ADMIN WIDGETS
+require_once( dirname( __FILE__ ) . '/includes/youtube-master-admin-widgets.php');
+// HOOK ADMIN ADDONS
+require_once( dirname( __FILE__ ) . '/includes/youtube-master-admin-addons.php');
+// HOOK ADMIN UPDATER
+require_once( dirname( __FILE__ ) . '/includes/youtube-master-admin-updater.php');
+// HOOK WIDGET YOUTUBE BUTTONS
+require_once( dirname( __FILE__ ) . '/includes/youtube-master-widget-youtube-buttons.php');
 
-// DEFINE PLUGIN NICK
-define('YOUTUBE_MASTER_NICK', 'Youtube Master');
-
-// HOOK WIDGET
-require_once( dirname( __FILE__ ) . '/includes/youtube-master-widget.php');
-
-// HOOK INVITATION
-
-// HOOK SHORTCODE
-
-	class youtube_master{
-		/** function/method
-		* Usage: hooking the plugin options/settings
-		* Arg(0): null
-		* Return: void
-		*/
-		public static function youtube_master_register()
-		{
-			register_setting(YOUTUBE_MASTER_ID, 'tsm_quote');
-		}
-		/** function/method
-		* Usage: hooking (registering) the plugin menu
-		* Arg(0): null
-		* Return: void
-		*/
-		public static function menu()
-		{
-			// Create menu tab
-			add_options_page(YOUTUBE_MASTER_NICK.' Plugin Options', YOUTUBE_MASTER_NICK, 'manage_options', YOUTUBE_MASTER_ID.'-admin', array('youtube_master', 'options_page'));
-			add_filter( 'plugin_action_links', array('youtube_master', 'youtube_master_link'), 10, 2 );
-		}
-		/** function/method
-		* Usage: show options/settings form page
-		* Arg(0): null
-		* Return: void
-		*/
-		public static function options_page()
-		{
-			if (!current_user_can('manage_options'))
-			{
-				wp_die( __('You do not have sufficient permissions to access this page.') );
-			}
-			$plugin_id = YOUTUBE_MASTER_ID;
-			// display options page
-			include( dirname( __FILE__ ) . '/includes/youtube-master-admin.php');
-		}
-		/** function/method
-		* Usage: show options/settings form page
-		* Arg(0): null
-		* Return: void
-		*/
-		 public static function youtube_master_widget()
-		{
-			// display widget page
-			include( dirname( __FILE__ ) . '/includes/youtube-master-widget.php');
-		}
-		/** function/method
-		* Usage: filtering the content
-		* Arg(1): string
-		* Return: string
-		*/
-		public static function content_with_quote($content)
-		{
-			$quote = '<p>' . get_option('tsm_quote') . '</p>';
-			return $content . $quote;
-		}
-		// Add settings link on plugin page
-		public static function youtube_master_link($links, $file) {
-			static $this_plugin;
-			if (!$this_plugin) $this_plugin = plugin_basename(__FILE__);
-			if ($file == $this_plugin){
-				$settings_link = '<a href="' . admin_url( 'options-general.php?page='.YOUTUBE_MASTER_ID).'-admin' . '">' . __( 'Settings' ) . '</a>';
-				array_unshift($links, $settings_link);
-			}
-		return $links;
-		}
-		// Advanced Updater
+class youtube_master{
+//REGISTER PLUGIN
+public static function youtube_master_register(){
+register_setting(YOUTUBE_MASTER_ID, 'tsm_quote');
+}
+public static function content_with_quote($content){
+$quote = '<p>' . get_option('tsm_quote') . '</p>';
+	return $content . $quote;
+}
+//SETTINGS LINK IN PLUGIN MANAGER
+public static function youtube_master_links( $links, $file ) {
+	if ( $file == plugin_basename( dirname(__FILE__).'/youtube-master.php' ) ) {
+		$links[] = '<a href="' . admin_url( 'admin.php?page=youtube-master' ) . '">'.__( 'Settings' ).'</a>';
 	}
-	if ( is_admin() )
-		{
-		add_action('admin_init', array('youtube_master', 'youtube_master_register'));
-		add_action('admin_menu', array('youtube_master', 'menu'));
-		}
-	add_filter('the_content', array('youtube_master', 'content_with_quote'));
+
+	return $links;
+}
+
+public static function youtube_master_updater_version_check(){
+global $youtube_master_version;
+//CHECK NEW VERSION
+$youtube_master_slug = basename(dirname(__FILE__));
+$current = get_site_transient( 'update_plugins' );
+$youtube_plugin_slug = $youtube_master_slug.'/'.$youtube_master_slug.'.php';
+@$r = $current->response[ $youtube_plugin_slug ];
+if (empty($r)){
+$r = false;
+$youtube_plugin_slug = false;
+if( is_multisite() ) {
+update_site_option( 'youtube_master_newest_version', $youtube_master_version );
+}
+else{
+update_option( 'youtube_master_newest_version', $youtube_master_version );
+}
+}
+if (!empty($r)){
+$youtube_plugin_slug = $youtube_master_slug.'/'.$youtube_master_slug.'.php';
+@$r = $current->response[ $youtube_plugin_slug ];
+if( is_multisite() ) {
+update_site_option( 'youtube_master_newest_version', $r->new_version );
+}
+else{
+update_option( 'youtube_master_newest_version', $r->new_version );
+}
+}
+}
+		// Advanced Updater
+
+//END CLASS
+}
+if ( is_admin() ){
+	add_action('admin_init', array('youtube_master', 'youtube_master_register'));
+	add_action('init', array('youtube_master', 'youtube_master_updater_version_check'));
+}
+add_filter('the_content', array('youtube_master', 'content_with_quote'));
+add_filter( 'plugin_action_links', array('youtube_master', 'youtube_master_links'), 10, 2 );
 endif;
-?>
