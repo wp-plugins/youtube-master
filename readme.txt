@@ -3,7 +3,7 @@ Contributors: Techgasp
 Tags: wordpress, plugin, widget, shortcode, techgasp, youtube, video, playlist, youtube video, youtube playlist, youtube channel, video player
 Requires at least: 3.5
 Tested up to: 3.8.1
-Stable tag: 4.3
+Stable tag: 4.3.6
 License: GPLv2 or later
 
 Youtube Master displays Youtube Playlists or Single Videos with optional Youtube Subscribe Channel button in any template widget position.
@@ -40,14 +40,17 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 * Youtube Master Responsive Playlist Widget. Specially designed for fast page load times of youtube playlists. Fully mobile responsive.
 * Display or hide Youtube Subscribe Button. Default with Bubble Count and Full with Bubble Count and Youtube User Avatar.
 * Display or hide Youtube Video Player (Single Youtube Videos or Playlists)
-* Shortcode Framework v3. Universal Shortcode for all pages and posts and Individual Shortcode for each page or post
-* Shortcodes allow you to professionally display youtube videos or playlists inside your wordpress pages and posts
+
+* TechGasp Shortcode Framework v3:
+* Universal Shortcode for all pages and posts, same Shortocde applies to all pages and posts. Option to Automatically add the shortcode to all pages and posts or manually add the pre-built shortcode individually per page or post. Option to automatically only show the shortcode in Posts and not Pages. Option to Automatically show the shortcode After the Title or After the Content.
+* Individual Shortcode for each page or post, individual customized shortcode per page or post
+* Shortcodes allow you to professionally display your plugin inside pages and posts maintaining fast page load times and excellent Google SEO
 * [Advanced Version Link](http://wordpress.techgasp.com/youtube-master/)
 
 **ONLINE DEMO**
 
 * Right of the page, sidebar widgets
-* Inside the post, with shortcode framework v2
+* Inside the post, with shortcode framework
 * [Demo Link](http://wordpress.techgasp.com/youtube-master/)
 
 **More High Quality Plugins?**
@@ -103,6 +106,21 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 
 
 == Changelog ==
+
+= 4.3.6 =
+* Adding Dark Theme Fast Activation to Youtube Subscribe Buttons, Widgets and Shortcodes
+* Adding Bubble Count Fast Activation to Youtube Subscribe Buttons, Widgets and Shortcode
+* Adding Full Layout Fast Activation to Youtube Subscribe Buttons, Widgets and Shortcode
+
+= 4.3.5 =
+* TechGasp Plugin Framework v3 Improvements and Upgrades
+* New Universal Shortcode Options:
+* Option to Automatically add the shortcode to all pages and posts or manually add the pre-built shortcode individually per page and post
+* Option to Automatically only show the shortcode in Posts, not Pages
+* Option to Automatically show the shortcode After the Title or After the Content
+* Re-adding Youtube Subscribe Button to Individual Shortcode
+* Code clean up and speed up
+* Fixed a couple of warning
 
 = 4.3 =
 * New TechGasp Plugin Framework

@@ -22,6 +22,8 @@ class youtube_master_widget_buttons extends WP_Widget {
 		$show_youtubebutton = isset( $instance['show_youtubebutton'] ) ? $instance['show_youtubebutton'] :false;
 		$youtubebutton_id = $instance['youtubebutton_id'];
 		$youtubebutton_layout = $instance['youtubebutton_layout'];
+		$youtubebutton_count = $instance['youtubebutton_count'];
+		$youtubebutton_color = $instance['youtubebutton_color'];
 		echo $before_widget;
 		
 // Display the widget title
@@ -33,10 +35,31 @@ class youtube_master_widget_buttons extends WP_Widget {
 	}
 	else{
 	}
+//Prepare Button Layout
+	if ( $youtubebutton_layout ){
+		$youtubebutton_layout_create = 'data-layout="full"';
+	}
+	else{
+		$youtubebutton_layout_create = 'data-layout="default"';
+	}
+//Prepare Button Color
+	if ( $youtubebutton_color ){
+		$youtubebutton_color_create = 'data-theme="dark"';
+	}
+	else{
+		$youtubebutton_color_create = '';
+	}
+//Prepare Button Count Bubble
+	if ( $youtubebutton_count ){
+		$youtubebutton_count_create = 'data-count="default"';
+	}
+	else{
+		$youtubebutton_count_create = 'data-count="hidden"';
+	}
 //Display Youtube Subscribe Channel Button
 		if ( $show_youtubebutton ){
 		echo '<script src="https://apis.google.com/js/plusone.js"></script>' .
-			'<div class="g-ytsubscribe" data-channelid="'.$youtubebutton_id.'" data-layout="'.$youtubebutton_layout.'"></div>';
+			'<div class="g-ytsubscribe" data-channelid="'.$youtubebutton_id.'" '.$youtubebutton_layout_create.' '.$youtubebutton_color_create.' '.$youtubebutton_color_create.'></div>';
 		}
 		else{
 		}
@@ -51,11 +74,13 @@ class youtube_master_widget_buttons extends WP_Widget {
 		$instance['show_youtubebutton'] = isset($new_instance['show_youtubebutton']);
 		$instance['youtubebutton_id'] = $new_instance['youtubebutton_id'];
 		$instance['youtubebutton_layout'] = $new_instance['youtubebutton_layout'];
+		$instance['youtubebutton_count'] = $new_instance['youtubebutton_color'];
+		$instance['youtubebutton_color'] = $new_instance['youtubebutton_count'];
 		return $instance;
 	}
 	function form( $instance ) {
 	//Set up some default widget settings.
-	$defaults = array( 'youtube_title_new' => __('Youtube Master', 'youtube_master'), 'youtube_title' => true, 'youtube_title_new' => false, 'show_youtubebutton' => false, 'youtubebutton_id' => false, 'youtubebutton_layout' => false );
+	$defaults = array( 'youtube_title_new' => __('Youtube Master', 'youtube_master'), 'youtube_title' => true, 'youtube_title_new' => false, 'show_youtubebutton' => false, 'youtubebutton_id' => false, 'youtubebutton_layout' => true, 'youtubebutton_color' => false, 'youtubebutton_count' => true );
 	$instance = wp_parse_args( (array) $instance, $defaults );
 	?>
 		<br>
@@ -64,7 +89,7 @@ class youtube_master_widget_buttons extends WP_Widget {
 	<img src="<?php echo plugins_url('../images/techgasp-minilogo-16.png', __FILE__); ?>" style="float:left; height:16px; vertical-align:middle;" />
 	&nbsp;
 	<input type="checkbox" <?php checked( (bool) $instance['youtube_title'], true ); ?> id="<?php echo $this->get_field_id( 'youtube_title' ); ?>" name="<?php echo $this->get_field_name( 'youtube_title' ); ?>" />
-	<label for="<?php echo $this->get_field_id( 'youtube_title' ); ?>"><b><?php _e('Display Widget Title', 'youtube_master'); ?></b></label></br>
+	<label for="<?php echo $this->get_field_id( 'youtube_title' ); ?>"><b><?php _e('Display Widget Title', 'youtube_master'); ?></b></label>
 	</p>
 	<p>
 	<label for="<?php echo $this->get_field_id( 'youtube_title_new' ); ?>"><?php _e('Change Title:', 'youtube_master'); ?></label>
@@ -76,26 +101,32 @@ class youtube_master_widget_buttons extends WP_Widget {
 	<img src="<?php echo plugins_url('../images/techgasp-minilogo-16.png', __FILE__); ?>" style="float:left; height:16px; vertical-align:middle;" />
 	&nbsp;
 	<input type="checkbox" <?php checked( (bool) $instance['show_youtubebutton'], true ); ?> id="<?php echo $this->get_field_id( 'show_youtubebutton' ); ?>" name="<?php echo $this->get_field_name( 'show_youtubebutton' ); ?>" />
-	<label for="<?php echo $this->get_field_id( 'show_youtubebutton' ); ?>"><b><?php _e('Youtube Subcribe Channel Button', 'youtube_master'); ?></b></label></br>
+	<label for="<?php echo $this->get_field_id( 'show_youtubebutton' ); ?>"><b><?php _e('Youtube Subcribe Channel Button', 'youtube_master'); ?></b></label>
 	</p>
 	<p>
-	<label for="<?php echo $this->get_field_id( 'youtubebutton_id' ); ?>"><?php _e('insert your Youtube Username or Channel ID:', 'youtube_master'); ?></label></br>
+	<label for="<?php echo $this->get_field_id( 'youtubebutton_id' ); ?>"><?php _e('insert your Youtube Username or Channel ID:', 'youtube_master'); ?></label><br>
 	<input id="<?php echo $this->get_field_id( 'youtubebutton_id' ); ?>" name="<?php echo $this->get_field_name( 'youtubebutton_id' ); ?>" value="<?php echo $instance['youtubebutton_id']; ?>" style="width:auto;" />
 	</p>
 	<div class="description"><a href="http://www.youtube.com/account_advanced/" target="_blank" title="Youtube Channel ID">Get my Channel ID</a></div>
 	<p>
-	<label for="<?php echo $this->get_field_id( 'youtubebutton_layout' ); ?>"><?php _e('Youtube Button Type:', 'youtube_master'); ?></label></br>
-	<input id="<?php echo $this->get_field_id( 'youtubebutton_layout' ); ?>" name="<?php echo $this->get_field_name( 'youtubebutton_layout' ); ?>" value="<?php echo $instance['youtubebutton_layout']; ?>" style="width:auto;" />
+	<input type="checkbox" <?php checked( (bool) $instance['youtubebutton_layout'], true ); ?> id="<?php echo $this->get_field_id( 'youtubebutton_layout' ); ?>" name="<?php echo $this->get_field_name( 'youtubebutton_layout' ); ?>" />
+	<label for="<?php echo $this->get_field_id( 'youtubebutton_layout' ); ?>"><b><?php _e('Activate Full Layout', 'youtube_master'); ?></b></label>
 	</p>
-	<div class="description">Write the desired layout, <b>default</b> or <b>full</b></a>.</div>
-	</br>
+	<p>
+	<input type="checkbox" <?php checked( (bool) $instance['youtubebutton_color'], true ); ?> id="<?php echo $this->get_field_id( 'youtubebutton_color' ); ?>" name="<?php echo $this->get_field_name( 'youtubebutton_color' ); ?>" />
+	<label for="<?php echo $this->get_field_id( 'youtubebutton_color' ); ?>"><b><?php _e('Activate Dark Theme', 'youtube_master'); ?></b></label>
+	</p>
+	<p>
+	<input type="checkbox" <?php checked( (bool) $instance['youtubebutton_count'], true ); ?> id="<?php echo $this->get_field_id( 'youtubebutton_count' ); ?>" name="<?php echo $this->get_field_name( 'youtubebutton_count' ); ?>" />
+	<label for="<?php echo $this->get_field_id( 'youtubebutton_count' ); ?>"><b><?php _e('Activate Bubble Count', 'youtube_master'); ?></b></label>
+	</p>
 <div style="background: url(<?php echo plugins_url('../images/techgasp-hr.png', __FILE__); ?>) repeat-x; height: 10px"></div>
 	<p>
 	<img src="<?php echo plugins_url('../images/techgasp-minilogo-16.png', __FILE__); ?>" style="float:left; width:16px; vertical-align:middle;" />
 	&nbsp;
 	<b>Youtube Master Website</b>
 	</p>
-	<p><a class="button-secondary" href="http://wordpress.techgasp.com/youtube-master/" target="_blank" title="Youtube Master Info Page">Info Page</a> <a class="button-secondary" href="http://wordpress.techgasp.com/youtube-master-documentation/" target="_blank" title="Youtube Master Documentation">Documentation</a> <a class="button-primary" href="http://wordpress.techgasp.com/youtube-master/" target="_blank" title="Visit Website">Get Add-ons</a></p>
+	<p><a class="button-secondary" href="http://wordpress.techgasp.com/youtube-master/" target="_blank" title="Youtube Master Info Page">Info Page</a> <a class="button-secondary" href="http://wordpress.techgasp.com/youtube-master-documentation/" target="_blank" title="Youtube Master Documentation">Documentation</a> <a class="button-primary" href="http://wordpress.techgasp.com/youtube-master/" target="_blank" title="Youtube Master Wordpress">Get Add-ons</a></p>
 	<?php
 	}
  }
