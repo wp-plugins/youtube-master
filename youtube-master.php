@@ -2,7 +2,7 @@
 /**
 Plugin Name: Youtube Master
 Plugin URI: http://wordpress.techgasp.com/youtube-master/
-Version: 4.3.8
+Version: 4.3.8.1
 Author: TechGasp
 Author URI: http://wordpress.techgasp.com
 Text Domain: youtube-master
@@ -28,9 +28,9 @@ if(!class_exists('youtube_master')) :
 ///////DEFINE ID//////
 define('YOUTUBE_MASTER_ID', 'youtube-master');
 ///////DEFINE VERSION///////
-define( 'youtube_master_VERSION', '4.3.8' );
+define( 'youtube_master_VERSION', '4.3.8.1' );
 global $youtube_master_version, $youtube_master_name;
-$youtube_master_version = "4.3.8"; //for other pages
+$youtube_master_version = "4.3.8.1"; //for other pages
 $youtube_master_name = "Youtube Master"; //pretty name
 if( is_multisite() ) {
 update_site_option( 'youtube_master_installed_version', $youtube_master_version );
