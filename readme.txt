@@ -2,7 +2,7 @@
 Contributors: Techgasp
 Tags: wordpress, plugin, widget, shortcode, techgasp, youtube, video, playlist, youtube video, youtube playlist, youtube channel, video player
 Requires at least: 3.5
-Tested up to: 3.9
+Tested up to: 3.9.1
 Stable tag: 4.3.8.1
 License: GPLv2 or later
 
@@ -107,7 +107,7 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 
 == Changelog ==
 
-= 4.3.8.a =
+= 4.3.8.1 =
 * Moving Subscribe Button from video bottom to video top. Revising shortcodes and mobile responsiveness
 * Overall shortcodes revision and upgrades
 
