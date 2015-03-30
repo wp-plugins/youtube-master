@@ -29,9 +29,17 @@ class youtube_master_widget_buttons extends WP_Widget {
 // Display the widget title
 	if ( $youtube_title ){
 		if (empty ($youtube_title_new)){
-		$youtube_title_new = get_option('youtube_master_name');
-		}
+			if(is_multisite()){
+			$youtube_title_new = get_site_option('youtube_master_name');
+			}
+			else{
+			$youtube_title_new = get_option('youtube_master_name');
+			}
 		echo $before_title . $youtube_title_new . $after_title;
+		}
+		else{
+		echo $before_title . $youtube_title_new . $after_title;
+		}
 	}
 	else{
 	}

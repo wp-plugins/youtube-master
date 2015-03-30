@@ -1,16 +1,7 @@
 <?php
-if( is_multisite() ) {
-	function menu_multi_youtube_admin_widgets(){
-	// Create menu
+function menu_single_youtube_admin_widgets(){
+	if ( is_admin() )
 	add_submenu_page( 'youtube-master', 'Widgets', 'Widgets', 'manage_options', 'youtube-master-admin-widgets', 'youtube_master_admin_widgets' );
-	}
-}
-else {
-	// Create menu
-	function menu_single_youtube_admin_widgets(){
-		if ( is_admin() )
-		add_submenu_page( 'youtube-master', 'Widgets', 'Widgets', 'manage_options', 'youtube-master-admin-widgets', 'youtube_master_admin_widgets' );
-	}
 }
 
 function youtube_master_admin_widgets(){
@@ -37,16 +28,15 @@ $wp_list_table->display();
 
 <p>
 <a class="button-secondary" href="http://wordpress.techgasp.com" target="_blank" title="Visit Website">More TechGasp Plugins</a>
-<a class="button-secondary" href="http://wordpress.techgasp.com/support/" target="_blank" title="Facebook Page">TechGasp Support</a>
+<a class="button-secondary" href="http://wordpress.techgasp.com/support/" target="_blank" title="TechGasp Support">TechGasp Support</a>
 <a class="button-primary" href="http://wordpress.techgasp.com/youtube-master/" target="_blank" title="Visit Website"><?php echo get_option('youtube_master_name'); ?> Info</a>
 <a class="button-primary" href="http://wordpress.techgasp.com/youtube-master-documentation/" target="_blank" title="Visit Website"><?php echo get_option('youtube_master_name'); ?> Documentation</a>
 <a class="button-primary" href="http://wordpress.techgasp.com/youtube-master/" target="_blank" title="Visit Website">Get Add-ons</a>
 </p>
 <?php
 }
-
 if( is_multisite() ) {
-add_action( 'network_admin_menu', 'menu_multi_youtube_admin_widgets' );
+add_action( 'admin_menu', 'menu_single_youtube_admin_widgets' );
 }
 else {
 add_action( 'admin_menu', 'menu_single_youtube_admin_widgets' );

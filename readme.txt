@@ -2,8 +2,8 @@
 Contributors: Techgasp
 Tags: wordpress, plugin, widget, shortcode, techgasp, youtube, video, playlist, youtube video, youtube playlist, youtube channel, video player
 Requires at least: 3.5
-Tested up to: 4.1
-Stable tag: 4.3.8.1
+Tested up to: 4.1.1
+Stable tag: 4.4.1.4
 License: GPLv2 or later
 
 Youtube Master displays Youtube Playlists or Single Videos with optional Youtube Subscribe Channel button in any template widget position.
@@ -38,6 +38,7 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 * Youtube Master Buttons Widget. Display or hide Youtube Subscribe Button. Default with Bubble Count and Full with Bubble Count and Youtube User Avatar. Works great when published under the other player youtube widgets.
 * Youtube Master Responsive Video Widget. Designed for single youtube videos fast page load times. Fully mobile responsive.
 * Youtube Master Responsive Playlist Widget. Specially designed for fast page load times of youtube playlists. Fully mobile responsive.
+* Youtube Master Webcam Upload Widget. Let's you record webcam clips and upload them to your Youtube Channel all from within your wordpress website.
 * Display or hide Youtube Subscribe Button. Default with Bubble Count and Full with Bubble Count and Youtube User Avatar.
 * Display or hide Youtube Video Player (Single Youtube Videos or Playlists)
 
@@ -103,9 +104,33 @@ IMPORTANT: Errors and conflicts free. NO JAVASCRIPT or AJAX
 4. Youtube Master Responsive Video Widget + Youtube Master Buttons Widget (Full Youtube Subscribe Button)
 5. Shortcode inside pages and posts. Individual Shortcode framework implementation.
 6. Shortcode inside pages and posts. Universal Shortcode framework implementation.
+7. Youtube Master Webcam Upload Widget.
 
 
 == Changelog ==
+
+= 4.4.1.4 =
+* Getting all widget titles network ready
+
+= 4.4.1.3 =
+* Tweaking Updater
+* New Widget added. Youtube Master Webcam Upload
+
+= 4.4.1.2 =
+* Adding Network Warnings and help texts
+
+= 4.4.1.1 =
+* Fixing uninstall, plugin deletion on wordpress network and multi-sites
+
+= 4.4.1.0 =
+* Fixing Shortcodes
+* Fixing Widgets
+* General clean-up and speed boost
+
+= 4.4.0 =
+* Wordpress multi-site or wordpress network ready
+* New screenshots and images
+* Youtube Subscribe Button tweaked
 
 = 4.3.8.1 =
 * Moving Subscribe Button from video bottom to video top. Revising shortcodes and mobile responsiveness

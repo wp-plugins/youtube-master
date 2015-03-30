@@ -2,7 +2,7 @@
 /**
 Plugin Name: Youtube Master
 Plugin URI: http://wordpress.techgasp.com/youtube-master/
-Version: 4.3.8.1
+Version: 4.4.1.4
 Author: TechGasp
 Author URI: http://wordpress.techgasp.com
 Text Domain: youtube-master
@@ -25,12 +25,16 @@ License: GPL2 or later
     Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 */
 if(!class_exists('youtube_master')) :
+///////DEFINE DIR///////
+define( 'YOUTUBE_MASTER_DIR', plugin_dir_path( __FILE__ ) );
+///////DEFINE URL///////
+define( 'YOUTUBE_MASTER_URL', plugin_dir_url( __FILE__ ) );
 ///////DEFINE ID//////
-define('YOUTUBE_MASTER_ID', 'youtube-master');
+define( 'YOUTUBE_MASTER_ID', 'youtube-master');
 ///////DEFINE VERSION///////
-define( 'youtube_master_VERSION', '4.3.8.1' );
+define( 'YOUTUBE_MASTER_VERSION', '4.4.1.4' );
 global $youtube_master_version, $youtube_master_name;
-$youtube_master_version = "4.3.8.1"; //for other pages
+$youtube_master_version = "4.4.1.4"; //for other pages
 $youtube_master_name = "Youtube Master"; //pretty name
 if( is_multisite() ) {
 update_site_option( 'youtube_master_installed_version', $youtube_master_version );
@@ -56,7 +60,7 @@ require_once( dirname( __FILE__ ) . '/includes/youtube-master-widget-youtube-but
 class youtube_master{
 //REGISTER PLUGIN
 public static function youtube_master_register(){
-register_setting(YOUTUBE_MASTER_ID, 'tsm_quote');
+register_activation_hook( __FILE__, array( __CLASS__, 'youtube_master_activate' ) );
 }
 public static function content_with_quote($content){
 $quote = '<p>' . get_option('tsm_quote') . '</p>';
@@ -64,10 +68,15 @@ $quote = '<p>' . get_option('tsm_quote') . '</p>';
 }
 //SETTINGS LINK IN PLUGIN MANAGER
 public static function youtube_master_links( $links, $file ) {
-	if ( $file == plugin_basename( dirname(__FILE__).'/youtube-master.php' ) ) {
-		$links[] = '<a href="' . admin_url( 'admin.php?page=youtube-master' ) . '">'.__( 'Settings' ).'</a>';
+if ( $file == plugin_basename( dirname(__FILE__).'/youtube-master.php' ) ) {
+		if( is_network_admin() ){
+		$techgasp_plugin_url = network_admin_url( 'admin.php?page=youtube-master' );
+		}
+		else {
+		$techgasp_plugin_url = admin_url( 'admin.php?page=youtube-master' );
+		}
+	$links[] = '<a href="' . $techgasp_plugin_url . '">'.__( 'Settings' ).'</a>';
 	}
-
 	return $links;
 }
 
@@ -99,8 +108,9 @@ update_option( 'youtube_master_newest_version', $r->new_version );
 }
 }
 }
-		// Advanced Updater
-
+//Remove WP Updater
+// Advanced Updater
+//Updater Label Message
 //END CLASS
 }
 if ( is_admin() ){
